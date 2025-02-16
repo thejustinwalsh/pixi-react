@@ -1,27 +1,39 @@
 'use strict';
 
-var jsxRuntime = require('react/jsx-runtime');
+var jsxRuntime = require('react/jsx-runtime.js');
 var React = require('react');
 var pixi_js = require('pixi.js');
 
 function _interopNamespaceDefault(e) {
-  var n = Object.create(null);
-  if (e) {
-    Object.keys(e).forEach(function (k) {
-      if (k !== 'default') {
-        var d = Object.getOwnPropertyDescriptor(e, k);
-        Object.defineProperty(n, k, d.get ? d : {
-          enumerable: true,
-          get: function () { return e[k]; }
+    var n = Object.create(null);
+    if (e) {
+        Object.keys(e).forEach(function (k) {
+            if (k !== 'default') {
+                var d = Object.getOwnPropertyDescriptor(e, k);
+                Object.defineProperty(n, k, d.get ? d : {
+                    enumerable: true,
+                    get: function () { return e[k]; }
+                });
+            }
         });
-      }
-    });
-  }
-  n.default = e;
-  return Object.freeze(n);
+    }
+    n.default = e;
+    return Object.freeze(n);
 }
 
 var React__namespace = /*#__PURE__*/_interopNamespaceDefault(React);
+
+(function() {
+    const env = {"NODE_ENV":"production"};
+    try {
+        if (process) {
+            process.env = Object.assign({}, process.env);
+            Object.assign(process.env, env);
+            return;
+        }
+    } catch (e) {} // avoid ReferenceError: process is not defined
+    globalThis.process = { env:env };
+})();
 
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
@@ -229,16 +241,6 @@ var constants$2 = {exports: {}};
 
 var reactReconcilerConstants_production = {};
 
-/**
- * @license React
- * react-reconciler-constants.production.js
- *
- * Copyright (c) Meta Platforms, Inc. and affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 var hasRequiredReactReconcilerConstants_production;
 
 function requireReactReconcilerConstants_production () {
@@ -256,16 +258,6 @@ function requireReactReconcilerConstants_production () {
 }
 
 var reactReconcilerConstants_development = {};
-
-/**
- * @license React
- * react-reconciler-constants.development.js
- *
- * Copyright (c) Meta Platforms, Inc. and affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
 
 var hasRequiredReactReconcilerConstants_development;
 
@@ -428,6 +420,7 @@ var devDependencies = {
 	"react-dom": "^19.0.0",
 	rollup: "^4.18.0",
 	"rollup-plugin-esbuild": "^6.1.1",
+	"rollup-plugin-inject-process-env": "^1.3.1",
 	"rollup-plugin-peer-deps-external": "^2.2.4",
 	"rollup-plugin-sourcemaps": "^0.6.3",
 	typescript: "^5.4.5",
@@ -964,16 +957,6 @@ var scheduler$1 = {exports: {}};
 
 var scheduler_production = {};
 
-/**
- * @license React
- * scheduler.production.js
- *
- * Copyright (c) Meta Platforms, Inc. and affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 var hasRequiredScheduler_production;
 
 function requireScheduler_production () {
@@ -1316,16 +1299,6 @@ function requireScheduler_production () {
 }
 
 var scheduler_development = {};
-
-/**
- * @license React
- * scheduler.development.js
- *
- * Copyright (c) Meta Platforms, Inc. and affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
 
 var hasRequiredScheduler_development;
 
@@ -1708,15 +1681,6 @@ function requireScheduler () {
 	return scheduler$1.exports;
 }
 
-/**
- * @license React
- * react-reconciler.production.js
- *
- * Copyright (c) Meta Platforms, Inc. and affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
 var reactReconciler_production = reactReconciler_production$1.exports;
 
 var hasRequiredReactReconciler_production;
@@ -12647,15 +12611,6 @@ function requireReactReconciler_production () {
 
 var reactReconciler_development$1 = {exports: {}};
 
-/**
- * @license React
- * react-reconciler.development.js
- *
- * Copyright (c) Meta Platforms, Inc. and affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
 var reactReconciler_development = reactReconciler_development$1.exports;
 
 var hasRequiredReactReconciler_development;

@@ -1,5 +1,6 @@
 import path from 'node:path';
 import esbuild from 'rollup-plugin-esbuild';
+import injectProcessEnv from 'rollup-plugin-inject-process-env';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import sourcemaps from 'rollup-plugin-sourcemaps';
 import repo from './package.json' with { type: 'json' };
@@ -40,7 +41,7 @@ function convertPackageNameToRegExp(packageName)
 }
 
 // Check for bundle folder
-const external = (bundle ? [] : Object.keys(dependencies))
+const external = (bundle ? ['react/jsx-runtime'] : Object.keys(dependencies))
     .concat(Object.keys(peerDependencies))
     .map(convertPackageNameToRegExp);
 
@@ -81,16 +82,19 @@ export default {
         },
     ],
     plugins: [
+        json(),
         esbuild({ target: moduleTarget }),
         sourcemaps(),
         commonjs({
             esmExternals: true,
         }),
+        injectProcessEnv({
+            NODE_ENV: 'production',
+        }),
         resolve({
             browser: true,
             preferBuiltins: false,
         }),
-        json(),
         peerDepsExternal(),
     ],
     external,
