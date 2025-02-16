@@ -428,6 +428,7 @@ var devDependencies = {
 	"react-dom": "^19.0.0",
 	rollup: "^4.18.0",
 	"rollup-plugin-esbuild": "^6.1.1",
+	"rollup-plugin-peer-deps-external": "^2.2.4",
 	"rollup-plugin-sourcemaps": "^0.6.3",
 	typescript: "^5.4.5",
 	vitest: "^2.0.0"
@@ -475,7 +476,7 @@ var packageData = {
 	husky: husky,
 	"lint-staged": {
 	"*.{ts,js,mjs}": [
-		"eslint --cache --fix --max-warnings 0"
+		"eslint --cache --fix --no-warn-ignored --max-warnings 0"
 	]
 },
 	dependencies: dependencies,
@@ -956,6 +957,8 @@ function createInstance(type, props, root) {
 var reactReconciler$1 = {exports: {}};
 
 var reactReconciler_production$1 = {exports: {}};
+
+var require$$0 = /*@__PURE__*/getAugmentedNamespace(React__namespace);
 
 var scheduler$1 = {exports: {}};
 
@@ -11431,7 +11434,7 @@ function requireReactReconciler_production () {
 		  }
 		  var exports = {};
 		  ("use strict");
-		  var React$1 = React,
+		  var React = require$$0,
 		    Scheduler = requireScheduler(),
 		    assign = Object.assign,
 		    REACT_LEGACY_ELEMENT_TYPE = Symbol.for("react.element"),
@@ -11457,7 +11460,7 @@ function requireReactReconciler_production () {
 		    MAYBE_ITERATOR_SYMBOL = Symbol.iterator,
 		    REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"),
 		    ReactSharedInternals =
-		      React$1.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE,
+		      React.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE,
 		    prefix,
 		    suffix,
 		    reentry = !1,
@@ -26670,7 +26673,7 @@ function requireReactReconciler_development () {
 		    }
 		    var exports = {};
 		    ("use strict");
-		    var React$1 = React,
+		    var React = require$$0,
 		      Scheduler = requireScheduler(),
 		      assign = Object.assign,
 		      REACT_LEGACY_ELEMENT_TYPE = Symbol.for("react.element"),
@@ -26696,7 +26699,7 @@ function requireReactReconciler_development () {
 		      MAYBE_ITERATOR_SYMBOL = Symbol.iterator,
 		      REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"),
 		      ReactSharedInternals =
-		        React$1.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE,
+		        React.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE,
 		      disabledDepth = 0,
 		      prevLog,
 		      prevInfo,

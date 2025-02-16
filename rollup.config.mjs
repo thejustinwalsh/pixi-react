@@ -1,5 +1,6 @@
 import path from 'node:path';
 import esbuild from 'rollup-plugin-esbuild';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import sourcemaps from 'rollup-plugin-sourcemaps';
 import repo from './package.json' with { type: 'json' };
 import commonjs from '@rollup/plugin-commonjs';
@@ -82,12 +83,15 @@ export default {
     plugins: [
         esbuild({ target: moduleTarget }),
         sourcemaps(),
+        commonjs({
+            esmExternals: true,
+        }),
         resolve({
             browser: true,
             preferBuiltins: false,
         }),
-        commonjs(),
         json(),
+        peerDepsExternal(),
     ],
     external,
     treeshake: false

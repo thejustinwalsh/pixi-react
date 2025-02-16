@@ -1,6 +1,6 @@
 import { jsx } from 'react/jsx-runtime';
 import * as React from 'react';
-import React__default, { createContext, useLayoutEffect, useEffect, forwardRef, useRef, useImperativeHandle, useCallback, useContext, useMemo } from 'react';
+import { createContext, useLayoutEffect, useEffect, forwardRef, useRef, useImperativeHandle, useCallback, useContext, useMemo } from 'react';
 import { Filter, Container, Graphics, Application as Application$1, TextStyle, extensions } from 'pixi.js';
 
 var __defProp = Object.defineProperty;
@@ -408,6 +408,7 @@ var devDependencies = {
 	"react-dom": "^19.0.0",
 	rollup: "^4.18.0",
 	"rollup-plugin-esbuild": "^6.1.1",
+	"rollup-plugin-peer-deps-external": "^2.2.4",
 	"rollup-plugin-sourcemaps": "^0.6.3",
 	typescript: "^5.4.5",
 	vitest: "^2.0.0"
@@ -455,7 +456,7 @@ var packageData = {
 	husky: husky,
 	"lint-staged": {
 	"*.{ts,js,mjs}": [
-		"eslint --cache --fix --max-warnings 0"
+		"eslint --cache --fix --no-warn-ignored --max-warnings 0"
 	]
 },
 	dependencies: dependencies,
@@ -936,6 +937,8 @@ function createInstance(type, props, root) {
 var reactReconciler$1 = {exports: {}};
 
 var reactReconciler_production$1 = {exports: {}};
+
+var require$$0 = /*@__PURE__*/getAugmentedNamespace(React);
 
 var scheduler$1 = {exports: {}};
 
@@ -11411,7 +11414,7 @@ function requireReactReconciler_production () {
 		  }
 		  var exports = {};
 		  ("use strict");
-		  var React = React__default,
+		  var React = require$$0,
 		    Scheduler = requireScheduler(),
 		    assign = Object.assign,
 		    REACT_LEGACY_ELEMENT_TYPE = Symbol.for("react.element"),
@@ -26650,7 +26653,7 @@ function requireReactReconciler_development () {
 		    }
 		    var exports = {};
 		    ("use strict");
-		    var React = React__default,
+		    var React = require$$0,
 		      Scheduler = requireScheduler(),
 		      assign = Object.assign,
 		      REACT_LEGACY_ELEMENT_TYPE = Symbol.for("react.element"),
