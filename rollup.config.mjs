@@ -6,6 +6,8 @@ import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
 import resolve from '@rollup/plugin-node-resolve';
 
+const bundle = process.env.npm_config_bundle === 'true';
+
 const moduleTarget = 'es2020';
 const paths = {
     distributable: path.join(process.cwd(), 'dist'),
@@ -37,7 +39,7 @@ function convertPackageNameToRegExp(packageName)
 }
 
 // Check for bundle folder
-const external = Object.keys(dependencies)
+const external = (bundle ? [] : Object.keys(dependencies))
     .concat(Object.keys(peerDependencies))
     .map(convertPackageNameToRegExp);
 
