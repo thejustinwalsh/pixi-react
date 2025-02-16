@@ -1,6 +1,6 @@
 'use strict';
 
-var jsxRuntime = require('react/jsx-runtime.js');
+var jsxRuntime = require('react/jsx-runtime');
 var React = require('react');
 var pixi_js = require('pixi.js');
 

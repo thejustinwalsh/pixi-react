@@ -1,4 +1,4 @@
-import { jsx } from 'react/jsx-runtime.js';
+import { jsx } from 'react/jsx-runtime';
 import * as React from 'react';
 import { createContext, useLayoutEffect, useEffect, forwardRef, useRef, useImperativeHandle, useCallback, useContext, useMemo } from 'react';
 import { Filter, Container, Graphics, Application as Application$1, TextStyle, extensions } from 'pixi.js';
